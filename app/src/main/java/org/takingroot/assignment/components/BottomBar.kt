@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun BottomBar() {
+fun BottomBar(onTabSelected: (Int) -> Unit) {
     Surface(
 //        color = MaterialTheme.colorScheme.background,
         modifier = Modifier
@@ -28,21 +28,21 @@ fun BottomBar() {
                 .padding(8.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Button(onClick = {}) {
+            Button(onClick = { onTabSelected(0) }) {
                 Icon(
                     Icons.Default.List,
                     contentDescription = "Forms list",
                     modifier = Modifier.size(40.dp)
                 )
             }
-            Button(onClick = {}) {
+            Button(onClick = { onTabSelected(1) }) {
                 Icon(
                     Icons.Default.Share,
-                    contentDescription = "Data",
+                    contentDescription = "Responses",
                     modifier = Modifier.size(40.dp)
                 )
             }
-            Button(onClick = {}) {
+            Button(onClick = { onTabSelected(2) }) {
                 Icon(
                     Icons.Default.Settings,
                     contentDescription = "Settings",
@@ -57,5 +57,5 @@ fun BottomBar() {
 @Preview
 @Composable
 fun BottomBarPreview() {
-    BottomBar()
+    BottomBar(onTabSelected = {})
 }

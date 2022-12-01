@@ -7,13 +7,14 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.takingroot.assignment.components.BottomBar
 import org.takingroot.assignment.components.NavBar
+import org.takingroot.assignment.screens.ResponseList
 import org.takingroot.assignment.screens.SurveyList
 import org.takingroot.assignment.ui.theme.MobileAssignmentTheme
 import org.takingroot.assignment.viewmodels.SurveyViewModel
@@ -40,13 +41,18 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Home(viewModel: SurveyViewModel) {
+    var selectedTab by remember { mutableStateOf(0) }
 
     Column(verticalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxSize()) {
         NavBar("Assignment")
         Box(modifier = Modifier.padding(8.dp)) {
-            SurveyList(viewModel)
+            if (selectedTab == 0) {
+                SurveyList()
+            } else {
+                ResponseList(viewModel)
+            }
         }
-        BottomBar()
+        BottomBar(onTabSelected = { selectedTab = it })
     }
 }
 

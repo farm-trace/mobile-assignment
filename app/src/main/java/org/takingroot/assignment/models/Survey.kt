@@ -1,7 +1,6 @@
 package org.takingroot.assignment.models
 
 import androidx.annotation.NonNull
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import java.util.*
 
@@ -18,8 +17,11 @@ data class Survey(
 @Dao
 interface SurveyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun save(vararg survey: Survey)
+    fun save(vararg survey: Survey)
 
     @Query("select * from surveys")
-    suspend fun getAll(): List<Survey>
+    fun getAll(): List<Survey>
+
+    @Delete
+    fun delete(vararg surveys: Survey)
 }

@@ -20,6 +20,13 @@ class SurveyViewModel(private val repository: ISurveyRepository) : ViewModel() {
         this.refresh()
     }
 
+    fun send(vararg surveys: Survey) = viewModelScope.launch(Dispatchers.IO) {
+        withContext(this.coroutineContext) {
+            repository.delete(*surveys)
+            repository.fetchAll()
+        }
+    }
+
     fun save(vararg surveys: Survey) = viewModelScope.launch(Dispatchers.IO) {
         withContext(this.coroutineContext) {
             repository.save(
@@ -29,7 +36,7 @@ class SurveyViewModel(private val repository: ISurveyRepository) : ViewModel() {
         refresh()
     }
 
-    fun refresh() = viewModelScope.launch {
+    fun refresh() = viewModelScope.launch(Dispatchers.IO) {
         withContext(this.coroutineContext) { repository.fetchAll() }
     }
 

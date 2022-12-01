@@ -6,12 +6,18 @@ import org.takingroot.assignment.models.SurveyDao
 
 interface ISurveyRepository {
     var surveys: MutableLiveData<List<Survey>>
+    suspend fun delete(vararg survey: Survey)
     suspend fun save(vararg survey: Survey)
     suspend fun fetchAll()
 }
 
 class SurveyRepository(private val surveyDao: SurveyDao) : ISurveyRepository {
     override var surveys: MutableLiveData<List<Survey>> = MutableLiveData()
+
+
+    override suspend fun delete(vararg survey: Survey) {
+        surveyDao.delete(*survey)
+    }
 
     override suspend fun save(vararg survey: Survey) {
         surveyDao.save(*survey)
