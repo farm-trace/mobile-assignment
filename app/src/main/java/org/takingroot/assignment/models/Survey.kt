@@ -17,11 +17,11 @@ data class Survey(
 @Dao
 interface SurveyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(vararg survey: Survey)
+    suspend fun save(vararg survey: Survey)
 
     @Query("select * from surveys")
-    fun getAll(): List<Survey>
+    suspend fun getAll(): List<Survey>
 
     @Delete
-    fun delete(vararg surveys: Survey)
+    suspend fun delete(vararg surveys: Survey)
 }

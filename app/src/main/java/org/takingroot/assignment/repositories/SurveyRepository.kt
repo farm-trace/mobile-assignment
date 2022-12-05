@@ -14,19 +14,10 @@ interface ISurveyRepository {
 class SurveyRepository(private val surveyDao: SurveyDao) : ISurveyRepository {
     override var surveys: MutableLiveData<List<Survey>> = MutableLiveData()
 
+    override suspend fun delete(vararg survey: Survey) = surveyDao.delete(*survey)
 
-    override suspend fun delete(vararg survey: Survey) {
-        surveyDao.delete(*survey)
-    }
+    override suspend fun save(vararg survey: Survey) = surveyDao.save(*survey)
 
-    override suspend fun save(vararg survey: Survey) {
-        surveyDao.save(*survey)
-    }
-
-    override suspend fun fetchAll() {
-        println("Refreshing")
-        surveys.postValue(surveyDao.getAll())
-        println("Refreshed")
-    }
+    override suspend fun fetchAll() = surveys.postValue(surveyDao.getAll())
 
 }
