@@ -11,7 +11,10 @@ data class Survey(
     var id: UUID = UUID.randomUUID(),
 
     @NonNull
-    var name: String = ""
+    var name: String = "",
+
+    @NonNull
+    var payload: Map<String, Any> = mapOf()
 )
 
 @Dao

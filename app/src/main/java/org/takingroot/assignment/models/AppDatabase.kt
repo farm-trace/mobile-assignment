@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import org.takingroot.assignment.utils.converters.GSONConverter
 
 @Database(entities = [Survey::class], version = 1, exportSchema = false)
+@TypeConverters(GSONConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun surveyDao(): SurveyDao
 
