@@ -14,10 +14,13 @@ interface BaseAPIService {
 }
 
 class RetrofitInstance {
-    fun getInstance(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl("https://assignments.takingroot.app")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    companion object {
+        fun getInstance(): BaseAPIService {
+            return Retrofit.Builder()
+                .baseUrl("https://assignments.takingroot.app")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(BaseAPIService::class.java)
+        }
     }
 }

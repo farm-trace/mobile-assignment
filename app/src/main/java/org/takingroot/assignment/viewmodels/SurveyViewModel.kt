@@ -10,10 +10,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.takingroot.assignment.models.AppDatabase
 import org.takingroot.assignment.models.Survey
+import org.takingroot.assignment.networking.BaseAPIService
+import org.takingroot.assignment.networking.RetrofitInstance
 import org.takingroot.assignment.repositories.ISurveyRepository
 import org.takingroot.assignment.repositories.SurveyRepository
 
-class SurveyViewModel(private val repository: ISurveyRepository) : ViewModel() {
+class SurveyViewModel(
+    private val repository: ISurveyRepository,
+    private val apiService: BaseAPIService
+) : ViewModel() {
     val surveys = repository.surveys
 
     init {
@@ -22,7 +27,10 @@ class SurveyViewModel(private val repository: ISurveyRepository) : ViewModel() {
 
     fun send(vararg surveys: Survey) = viewModelScope.launch(Dispatchers.IO) {
         withContext(this.coroutineContext) {
-            repository.delete(*surveys)
+            surveys.forEach {
+                apiService.response(it.name, it)
+                repository.delete(it)
+            }
             repository.fetchAll()
         }
     }
@@ -51,7 +59,7 @@ class SurveyViewModel(private val repository: ISurveyRepository) : ViewModel() {
 
                 val db = AppDatabase.getDatabase(application)
                 val repository = SurveyRepository(db.surveyDao())
-                return SurveyViewModel(repository) as T
+                return SurveyViewModel(repository, RetrofitInstance.getInstance()) as T
             }
         }
     }
