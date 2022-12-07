@@ -7,13 +7,18 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
 
+
 interface BaseAPIService {
     @POST("survey/{type}")
     suspend fun response(@Path("type") type: String, @Body survey: Survey): Response<Void>
+
+    @GET("survey/user")
+    suspend fun getUserSurveys(): Response<APIResponse<UserResponse>>
 }
 
 class RetrofitInstance {
