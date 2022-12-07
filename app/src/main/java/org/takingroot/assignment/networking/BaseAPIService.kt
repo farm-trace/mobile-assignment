@@ -1,5 +1,6 @@
 package org.takingroot.assignment.networking
 
+import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import org.takingroot.assignment.models.Survey
@@ -38,9 +39,13 @@ class RetrofitInstance {
             .build()
 
         fun getInstance(): BaseAPIService {
+            val gson = GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .create()
+            
             return Retrofit.Builder().apply {
                 baseUrl("http://assignment.takingroot.app")
-                addConverterFactory(GsonConverterFactory.create())
+                addConverterFactory(GsonConverterFactory.create(gson))
                 client(client)
             }.build().create(BaseAPIService::class.java)
         }

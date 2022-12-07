@@ -2,10 +2,12 @@ package org.takingroot.assignment.models
 
 import androidx.annotation.NonNull
 import androidx.room.*
+import com.google.gson.annotations.Expose
 import java.util.*
 
 @Entity(tableName = "surveys")
 data class Survey(
+    @Expose
     @PrimaryKey
     @NonNull
     var id: UUID = UUID.randomUUID(),
@@ -14,6 +16,7 @@ data class Survey(
     var name: String = "",
 
     @NonNull
+    @Expose
     var payload: Map<String, Any> = mapOf()
 )
 

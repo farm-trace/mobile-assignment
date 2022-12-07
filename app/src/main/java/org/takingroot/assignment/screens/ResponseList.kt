@@ -18,7 +18,7 @@ fun ResponseList(viewModel: SurveyViewModel) {
     fun createSamples() {
         val surveys = (0..5).map {
             Survey(
-                name = "Survey $it",
+                name = "custom",
                 payload = mapOf(
                     "foo" to "bar",
                     "bar" to "foo"
