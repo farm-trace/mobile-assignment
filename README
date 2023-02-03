@@ -11,10 +11,8 @@ In this project, you will find:
 
 h2. Instructions
 h3. Task 
-> **Warning**
-> Determine desired submission method.
 
-Please fork the repository and then make the follow changes:
+Please fork this repository and then make the follow changes:
 
 * Identify any existing issues with the codebase you think are worth fixing
     * Fix the issues using your choice of solution, or if a much larger refactor is required, just explain what
@@ -31,27 +29,13 @@ Please fork the repository and then make the follow changes:
             * First and Last name cannot be null or blank
             * Must be a valid email
             * Only users over 18 are allowed
-    * > **Warning**
-      > Confirm get coordinate survey
 
 h3. Timing
 You are welcome to spend whatever time you want on the assignment, but please think crtically about where you choose
-to spend your time, as you would on a work assignment. It is important to use time appropriately and ensure you have
+to spend your time, as you would on a typical work assignment. It is important to use your time appropriately and ensure you have
 the assignment submitted by the indicated deadline.
 
 h3. API Definitions
-
-> **Warning**
-> TBD - determine correct version between what is here and below)
-
-POST https://assignment.takingroot.app/survey
-```json
-{
-	"id": "uuid",
-	"type": "user" | "custom",
-	"payload": { }
-}
-```
 
 GET http://assignment.takingroot.app/survey/user
 
