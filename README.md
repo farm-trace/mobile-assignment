@@ -17,9 +17,6 @@ In this project, you will find:
 
 Please fork this repository and then make the follow changes:
 
-* Identify any existing issues with the codebase you think are worth fixing
-    * Fix the issues using your choice of solution, or if a much larger refactor is required, just explain what
-      further changes you'd make if more time was available.
 * Implement a form:
     * User form validation
         * Type: `user`
@@ -32,12 +29,15 @@ Please fork this repository and then make the follow changes:
             * First and Last name cannot be null or blank
             * Must be a valid email
             * Only users over 18 are allowed
+* Identify any existing issues with the codebase you think are worth fixing
+    * Fix the issues using your choice of solution, or if a much larger refactor is required, just explain what
+      further changes you'd make if more time was available.
 
 ### Timing
 
 You are welcome to spend whatever time you want on the assignment, but please think critically about where you choose
-to spend your time, as you would on a typical work assignment. It is important to use your time appropriately and ensure you have
-the assignment submitted by the indicated deadline.
+to spend your time, as you would on a typical work assignment. Reaching a reasonable solution should take approximately 90 minutes. 
+It is important to use your time appropriately and ensure you have the assignment submitted by the deadline communicated to you by the recruiter.
 
 ### API Definitions
 
