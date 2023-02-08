@@ -1,5 +1,7 @@
-h1. Taking Root Mobile Assignment
-h2. About
+# Taking Root Mobile Assignment
+
+## About
+
 Hello and welcome to the Taking Root Mobile Assignment.
 
 In this project, you will find:
@@ -9,8 +11,9 @@ In this project, you will find:
 * Functionality to upload a survey to a server
 * Functionality to get responses from the server
 
-h2. Instructions
-h3. Task 
+## Instructions
+
+### Task 
 
 Please fork this repository and then make the follow changes:
 
@@ -30,12 +33,13 @@ Please fork this repository and then make the follow changes:
             * Must be a valid email
             * Only users over 18 are allowed
 
-h3. Timing
+### Timing
+
 You are welcome to spend whatever time you want on the assignment, but please think critically about where you choose
 to spend your time, as you would on a typical work assignment. It is important to use your time appropriately and ensure you have
 the assignment submitted by the indicated deadline.
 
-h3. API Definitions
+### API Definitions
 
 GET http://assignment.takingroot.app/survey/user
 
